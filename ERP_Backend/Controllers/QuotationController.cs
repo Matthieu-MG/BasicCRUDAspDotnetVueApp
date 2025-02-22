@@ -36,6 +36,7 @@ public class QuotationController : GenericController<Quotation, PostQuotationDTO
         return Ok( new List<PostDTOMetaData> {
             new() { Name = "ProductID", Type = "foreign", Label = "Product Name", Route="Product/Names/"},
             new() { Name = "Units", Type = "int", Label = "Units"},
+            new() { Name = "Price", Type = "decimal", Label = "Price"},
             new() { Name = "SocietyID", Type = "foreign", Label = "Society Name", Route="Society/Name/"},
             new() { Name = "State", Type = "enum", Label = "State", Route = "Quotation/QuotationStates"},
             new() { Name = "EmployeeID", Type = "foreign", Label = "Employee Name", Route="Employee/Names/"}
@@ -49,7 +50,14 @@ public class QuotationController : GenericController<Quotation, PostQuotationDTO
             "Product",
             "Employee",
             "Society",
-            "Units"
+            "Units",
+            "Price"
         });
+    }
+
+    [HttpGet("Ranking/{opt}")]
+    public async Task<ActionResult> GetQuotes(string opt)
+    {
+        return Ok(await _quotationService.GetQuotedProductsRanking(opt));
     }
 }

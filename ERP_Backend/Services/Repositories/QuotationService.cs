@@ -9,6 +9,8 @@ using Enterprise.API.Pagination;
 using System.Linq.Expressions;
 using AutoMapper.QueryableExtensions;
 using Enterprise.API.Services.Repositories;
+using Enterprise.API.DTOs;
+using Enterprise.API.Product;
 
 public class QuotationService : IPagedGenericRepository<Quotation, PostQuotationDTO, QuotationDTO>
 {
@@ -40,7 +42,6 @@ public class QuotationService : IPagedGenericRepository<Quotation, PostQuotation
             throw new NullReferenceException();
         }
 
-        Console.WriteLine(request);
         IQueryable<Quotation> query = _context.Quotations;
 
         //* Filtering
@@ -78,6 +79,40 @@ public class QuotationService : IPagedGenericRepository<Quotation, PostQuotation
         return page;
     }
 
+    //* Used by client to represent most/least quoted products on charts
+    public async Task<List<QuotedProductDTO>> GetQuotedProductsRanking(string opt)
+    {
+        const int MAX = 5;
+        var query = _context.Quotations.GroupBy( q => q.ProductID)
+                                       .Select(q => new
+                                       {
+                                            ProductId = q.Key,
+                                            QuotedCount = q.Count()
+                                       });
+
+        if(query == null)
+        {
+            throw new NullReferenceException();
+        }
+
+        if(opt != null && opt.Contains("desc"))
+        {
+            query = query.OrderByDescending(g => g.QuotedCount);
+        }
+        else
+        {
+            query = query.OrderBy(g => g.QuotedCount);
+        }
+
+        return await query.Take(MAX)
+            .Join(_context.Products, g => g.ProductId, p => p.Id, (g, p) => new QuotedProductDTO
+            {
+                ProductName = p.Name,
+                QuoteCount = g.QuotedCount
+            })
+            .ToListAsync();
+    }
+
     //* Fetches Quotation by ID from ORM
     public async Task<QuotationDTO?> ReadById(int id)
     {
@@ -108,6 +143,7 @@ public class QuotationService : IPagedGenericRepository<Quotation, PostQuotation
             "employee" => q => q.EmployeeObj.Name,
             "society" => q => q.SocietyObj.Name,
             "units" => q => q.Units,
+            "price" => q => q.Price,
             _ => q => q.ID
         };
     }

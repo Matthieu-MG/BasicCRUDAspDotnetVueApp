@@ -55,7 +55,10 @@
     // Called when table is updated, refreshes to first page
     async function refreshTable(route) {
         const table = tables.value.find(x => x.label === tab.value );
-        table.data.items = (await GetPage(table, 1)).items;
+        const page = await GetPage(table, 1)
+        
+        table.data.items = page.items;
+        table.data.searchedTotalRecords = page.totalItems;
     }
 
     // Callback to when table element changes to next page
@@ -117,6 +120,7 @@
     async function deleteItem(id, route) {
         try {
             await RequestBackendRoute('DELETE', `${route}/${id}`)
+            refreshTable(route);
         }
         catch (e) {
             console.log(e)
