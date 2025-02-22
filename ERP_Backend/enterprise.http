@@ -1,0 +1,28 @@
+GET https://localhost:7206/Product/page?Page=2&ItemsPerPage=5
+
+###
+GET https://localhost:7206/Product/page?Page=1&ItemsPerPage=5&SortOrder=desc&SortBy=price
+
+###
+GET https://localhost:7206/Product/SortOptions
+
+###
+GET https://localhost:7206/Quotation
+
+###
+GET https://localhost:7206/Product/PostDTO
+
+###
+GET https://localhost:7206/Product/Count
+
+###
+GET https://localhost:7206/Quotation/QuotationStates
+
+###
+POST https://localhost:7206/Product
+Content-Type: application/json
+
+{
+    "name": "Macbook Air",
+    "standardPrice": -1032
+}
