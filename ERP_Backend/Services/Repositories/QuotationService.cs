@@ -83,11 +83,12 @@ public class QuotationService : IPagedGenericRepository<Quotation, PostQuotation
     public async Task<List<QuotedProductDTO>> GetQuotedProductsRanking(string opt)
     {
         const int MAX = 5;
-        var query = _context.Quotations.GroupBy( q => q.ProductID)
+        var query = _context.Quotations.Where( q => q.State == QuotationState.ConvertedToOrder )
+                                       .GroupBy( q => q.ProductID)
                                        .Select(q => new
                                        {
                                             ProductId = q.Key,
-                                            QuotedCount = q.Count()
+                                            QuotedCount = q.Sum( q => q.Price)
                                        });
 
         if(query == null)
@@ -108,7 +109,7 @@ public class QuotationService : IPagedGenericRepository<Quotation, PostQuotation
             .Join(_context.Products, g => g.ProductId, p => p.Id, (g, p) => new QuotedProductDTO
             {
                 ProductName = p.Name,
-                QuoteCount = g.QuotedCount
+                TotalRevenue = g.QuotedCount
             })
             .ToListAsync();
     }

@@ -20,7 +20,7 @@ public class ProductController : GenericController<Product, PostProductDTO, Prod
     {
         return Ok( new List<PostDTOMetaData> {
             new() { Name = "Name", Type = "string", Label = "Name" },
-            new() { Name = "StandardPrice", Type = "decimal", Label = "Standard Price" }
+            new() { Name = "StandardPrice", Type = "price", Label = "Standard Price" }
         });
     }
 

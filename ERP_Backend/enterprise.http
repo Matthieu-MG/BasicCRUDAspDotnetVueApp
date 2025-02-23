@@ -10,7 +10,7 @@ GET https://localhost:7206/Product/SortOptions
 GET https://localhost:7206/Quotation
 
 ###
-GET https://localhost:7206/Quotation/Ranking/asc
+GET https://localhost:7206/Quotation/Ranking/desc
 
 ###
 GET https://localhost:7206/Product/PostDTO

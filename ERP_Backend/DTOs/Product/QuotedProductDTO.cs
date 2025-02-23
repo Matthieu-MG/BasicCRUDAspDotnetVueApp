@@ -4,5 +4,5 @@ namespace Enterprise.API.DTOs;
 public record class QuotedProductDTO
 {
     public string ProductName { get; set;} = default!;
-    public int QuoteCount {get; set;}
+    public decimal TotalRevenue {get; set;}
 }

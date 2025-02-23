@@ -15,6 +15,15 @@
     const sortOrder = ref("desc")
     const globalItemsPerPage = 5;
 
+    watch(tab, (v,  oldV) => {
+        search.value = ""
+        sortBy.value = ""
+        sortOrder.value = "desc"
+        
+        const table = tables.value.find(x => x.label === v);
+        refreshTable(table);
+    })
+
     watch(dialog, async (newValue, oldValue) => {
         // When dialog is closed, reset record value (reset auto-fill form on put action)
         if(newValue === false) {
@@ -140,7 +149,7 @@
 </script>
 
 <template>
-    <v-app-bar>
+    <v-app-bar color="blue-accent-3" :elevation="5">
         <v-app-bar-title>
             <v-icon icon="mdi-atom" @click="showDashboard"></v-icon>
             Atom
@@ -155,7 +164,7 @@
     </v-app-bar>
     
     <v-main>
-    <v-tabs v-model="tab">
+    <v-tabs v-model="tab" bg-color="blue-accent-2">
         <Tab v-for="table in tables" :title="table.label" :value="table.label" :key="table.label"/>
     </v-tabs>
 
@@ -169,8 +178,8 @@
 
                         <v-text-field density="compact" v-model="search" 
                             placeholder="Search" variant="outlined" clearable
-                            bg-color="teal"
-                            base-color="grey-darken-3"
+                            bg-color="light-blue-lighten-5"
+                            base-color="white"
                             color="grey-darken-3"
                         >
                         
@@ -181,7 +190,7 @@
                         </v-text-field>
                     </form>
 
-                    <v-expansion-panels bg-color="blue-lighten-1" class="pb-6">
+                    <v-expansion-panels bg-color="green-accent-2" class="pb-6">
                         <v-expansion-panel>
                             <v-expansion-panel-title>
 

@@ -39,6 +39,9 @@
             if(element.type === "foreign") {
                 prefilledPutData.value.push({value: props.data[getDataPointer++], id: props.data[getDataPointer]});
             }
+            else if(element.type === "price") {
+                prefilledPutData.value.push(props.data[getDataPointer].replace(/[$,]/g, ''))
+            }
             else {
                 prefilledPutData.value.push(props.data[getDataPointer])
             }
