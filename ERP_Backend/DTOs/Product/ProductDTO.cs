@@ -1,4 +1,4 @@
-namespace Enterprise.API.ProductDTO;
+namespace Enterprise.Models.Responses;
 
 public record class ProductDTO
 {

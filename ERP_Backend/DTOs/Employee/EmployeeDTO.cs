@@ -1,4 +1,4 @@
-namespace Enterprise.API.EmployeeDTO;
+namespace Enterprise.Models.Responses;
 
 //TODO Add Employee Department Field
 public record class EmployeeDTO

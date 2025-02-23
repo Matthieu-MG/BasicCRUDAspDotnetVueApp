@@ -1,4 +1,4 @@
-namespace Enterprise.API.GetQueryDTO;
+namespace Enterprise.API.Requests;
 
 public record class GetQueryDTO
 {

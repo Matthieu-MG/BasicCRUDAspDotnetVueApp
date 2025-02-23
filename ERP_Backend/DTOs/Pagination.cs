@@ -1,9 +1,9 @@
 using System.Linq.Expressions;
 using AutoMapper.QueryableExtensions;
-using Enterprise.API.GetQueryDTO;
+using Enterprise.API.Requests;
 using Microsoft.EntityFrameworkCore;
 
-namespace Enterprise.API.Pagination;
+namespace Enterprise.API.Responses;
 
 public record class Pagination<T>(
     List<T> Items,
@@ -26,9 +26,9 @@ public record class Pagination<T>(
 
     //* T : GetDTO Class, M : Model Data Class
     public static async Task<Pagination<T>> GetPage<M>(
-      GetQueryDTO.GetQueryDTO request, IQueryable<M> query,
+      GetQueryDTO request, IQueryable<M> query,
       Func< IQueryable<M>, IQueryable<M> > filterFunc,
-      Func<GetQueryDTO.GetQueryDTO, Expression<Func<M, object>> > sortProperty,
+      Func<GetQueryDTO, Expression<Func<M, object>> > sortProperty,
       AutoMapper.IConfigurationProvider configurationProvider
     )
     {

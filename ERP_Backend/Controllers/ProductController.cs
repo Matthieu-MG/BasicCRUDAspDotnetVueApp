@@ -1,8 +1,9 @@
-using Enterprise.API.DTOs;
-using Enterprise.API.Product;
-using Enterprise.API.ProductDTO;
 using Microsoft.AspNetCore.Mvc;
 using Enterprise.API.Controllers;
+using Enterprise.Models;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+using Enterprise.API.Responses;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,4 +1,4 @@
-using Enterprise.API.DTOs;
+using Enterprise.Models.Requests;
 using FluentValidation;
 
 namespace Enterprise.API.Validators;

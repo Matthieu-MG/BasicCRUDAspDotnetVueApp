@@ -2,15 +2,14 @@ using System.Data;
 using System.Linq.Expressions;
 using AutoMapper;
 
-using Enterprise.API.GetQueryDTO;
-using Enterprise.API.Pagination;
-using Enterprise.API.DTOs;
-using Enterprise.API.Product;
-using Enterprise.API.ProductDTO;
-
 using Enterprise.Data;
 using Microsoft.EntityFrameworkCore;
 using Enterprise.API.Services.Repositories;
+using Enterprise.Models;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+using Enterprise.API.Responses;
+using Enterprise.API.Requests;
 
 public class ProductRepository : 
     GenericRepository<Product, PostProductDTO, ProductDTO>,

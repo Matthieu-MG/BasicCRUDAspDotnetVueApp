@@ -1,5 +1,5 @@
-using Enterprise.API.GetQueryDTO;
-using Enterprise.API.Pagination;
+using Enterprise.API.Requests;
+using Enterprise.API.Responses;
 
 public interface IPaged<T>
 {

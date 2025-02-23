@@ -1,4 +1,4 @@
-using Enterprise.API.DTOs;
+using Enterprise.API.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Enterprise.API.Controllers;

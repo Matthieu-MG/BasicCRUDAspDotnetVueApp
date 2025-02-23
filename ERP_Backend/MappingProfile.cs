@@ -1,15 +1,7 @@
 using AutoMapper;
-using MvcQuotation.Models;
-using Enterprise.API.QuotationDTO;
-using Enterprise.API.PostQuotationDTO;
-using Enterprise.API.Product;
-using Enterprise.API.ProductDTO;
-using Enterprise.API.DTOs;
-using Enterprise.API.Society;
-using Enterprise.API.SocietyDTO;
-using Enterprise.API.PostSocietyDTO;
-using Enterprise.API.Employee;
-using Enterprise.API.EmployeeDTO;
+using Enterprise.Models;
+using Enterprise.Models.Responses;
+using Enterprise.Models.Requests;
 
 public class MappingProfile : Profile
 {

@@ -1,10 +1,10 @@
-using Enterprise.API.SocietyDTO;
-using Enterprise.API.PostSocietyDTO;
-using Enterprise.API.Society;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation;
 using Enterprise.API.Controllers;
-using Enterprise.API.DTOs;
+using Enterprise.Models.Requests;
+using Enterprise.Models;
+using Enterprise.Models.Responses;
+using Enterprise.API.Responses;
 
 [ApiController]
 [Route("[controller]")]

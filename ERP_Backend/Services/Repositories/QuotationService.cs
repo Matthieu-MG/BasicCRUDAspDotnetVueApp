@@ -1,16 +1,15 @@
 using Enterprise.Data;
 using Microsoft.EntityFrameworkCore;
-using MvcQuotation.Models;
 using AutoMapper;
-using Enterprise.API.QuotationDTO;
-using Enterprise.API.PostQuotationDTO;
-using Enterprise.API.GetQueryDTO;
-using Enterprise.API.Pagination;
 using System.Linq.Expressions;
 using AutoMapper.QueryableExtensions;
 using Enterprise.API.Services.Repositories;
-using Enterprise.API.DTOs;
-using Enterprise.API.Product;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+using Enterprise.Models;
+using Enterprise.API.Responses;
+using Enterprise.API.Requests;
+using Enterprise.Enums;
 
 public class QuotationService : IPagedGenericRepository<Quotation, PostQuotationDTO, QuotationDTO>
 {

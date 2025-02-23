@@ -1,4 +1,5 @@
-namespace Enterprise.API.QuotationDTO;
+using Enterprise.Enums;
+namespace Enterprise.Models.Responses;
 
 public record class QuotationDTO
 {

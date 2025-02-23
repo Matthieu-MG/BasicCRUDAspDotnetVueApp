@@ -1,4 +1,4 @@
-namespace Enterprise.API.DTOs;
+namespace Enterprise.API.Responses;
 
 public class EnumDTO
 {

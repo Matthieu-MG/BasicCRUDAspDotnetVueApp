@@ -1,3 +1,5 @@
+namespace Enterprise.Enums;
+
 public enum QuotationState
 {
     Drafted,

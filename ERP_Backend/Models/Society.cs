@@ -1,4 +1,4 @@
-namespace Enterprise.API.Society;
+namespace Enterprise.Models;
 
 public class Society
 {

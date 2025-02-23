@@ -1,4 +1,4 @@
-namespace Enterprise.API.DTOs;
+namespace Enterprise.Models.Responses;
 
 //* DTO for most/least quoted items, to represent on charts for most cases
 public record class QuotedProductDTO

@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Enterprise.API.QuotationDTO;
-using Enterprise.API.PostQuotationDTO;
 using Enterprise.API.Controllers;
-using MvcQuotation.Models;
-using Enterprise.API.DTOs;
+using Enterprise.Models;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+using Enterprise.API.Responses;
+using Enterprise.Enums;
 
 [ApiController]
 [Route("[controller]")]

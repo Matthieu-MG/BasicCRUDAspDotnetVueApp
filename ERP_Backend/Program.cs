@@ -1,6 +1,3 @@
-using Enterprise.API.DTOs;
-using Enterprise.API.PostQuotationDTO;
-using Enterprise.API.PostSocietyDTO;
 using Enterprise.API.Validators;
 using Enterprise.Data;
 using FluentValidation;
@@ -39,7 +36,6 @@ builder.Services.AddDbContext<EnterpriseDbContext>(options =>
 });
 
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddScoped(typeof(GenericCRUDService<,,>));
 builder.Services.AddTransient<QuotationService>();
 builder.Services.AddTransient<ProductRepository>();
 builder.Services.AddTransient<SocietyRepository>();

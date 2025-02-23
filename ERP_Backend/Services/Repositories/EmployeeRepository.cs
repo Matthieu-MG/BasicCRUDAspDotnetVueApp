@@ -1,13 +1,12 @@
 using System.Linq.Expressions;
 using AutoMapper;
-using Enterprise.API.DTOs;
-using Enterprise.API.Employee;
-using Enterprise.API.EmployeeDTO;
-
-using Enterprise.API.GetQueryDTO;
-using Enterprise.API.Pagination;
+using Enterprise.API.Requests;
+using Enterprise.API.Responses;
 using Enterprise.API.Services.Repositories;
 using Enterprise.Data;
+using Enterprise.Models;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
 using Microsoft.EntityFrameworkCore;
 
 public class EmployeeRepository :

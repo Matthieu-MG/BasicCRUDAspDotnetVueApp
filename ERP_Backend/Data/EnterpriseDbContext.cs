@@ -1,6 +1,4 @@
-using Enterprise.API.Employee;
-using Enterprise.API.Product;
-using Enterprise.API.Society;
+using Enterprise.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enterprise.Data
@@ -9,7 +7,7 @@ namespace Enterprise.Data
     {
         public EnterpriseDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<MvcQuotation.Models.Quotation> Quotations { get; set; } = null!;
+        public DbSet<Quotation> Quotations { get; set; } = null!;
         public DbSet<Product> Products{ get; set; } = null!;
         public DbSet<Society> Society { get; set;} = null!;
         public DbSet<Employee> Employee {get; set;} = null!;

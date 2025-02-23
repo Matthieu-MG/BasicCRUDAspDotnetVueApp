@@ -1,4 +1,5 @@
-namespace Enterprise.API.PostQuotationDTO;
+using Enterprise.Enums;
+namespace Enterprise.Models.Requests;
 
 public record class PostQuotationDTO
 {

@@ -1,4 +1,4 @@
-namespace Enterprise.API.SocietyDTO;
+namespace Enterprise.Models.Responses;
 
 public record class SocietyDTO
 {

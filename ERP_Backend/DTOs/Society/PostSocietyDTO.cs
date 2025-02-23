@@ -1,4 +1,4 @@
-namespace Enterprise.API.PostSocietyDTO;
+namespace Enterprise.Models.Requests;
 
 public record class PostSocietyDTO
 {

@@ -1,8 +1,5 @@
-using Enterprise.API.Employee;
-using Enterprise.API.Product;
-using Enterprise.API.Society;
-
-namespace MvcQuotation.Models;
+using Enterprise.Enums;
+namespace Enterprise.Models;
 
 public class Quotation
 {

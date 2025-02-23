@@ -1,13 +1,13 @@
-using Enterprise.API.PostSocietyDTO;
-using Enterprise.API.SocietyDTO;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using Enterprise.API.Society;
 using Enterprise.Data;
-using Enterprise.API.Pagination;
-using Enterprise.API.GetQueryDTO;
 using System.Linq.Expressions;
 using Enterprise.API.Services.Repositories;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+using Enterprise.Models;
+using Enterprise.API.Responses;
+using Enterprise.API.Requests;
 
 public class SocietyRepository : 
     GenericRepository<Society, PostSocietyDTO, SocietyDTO>, 

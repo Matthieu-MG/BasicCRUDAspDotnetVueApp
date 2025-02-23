@@ -1,4 +1,4 @@
-namespace Enterprise.API.Employee;
+namespace Enterprise.Models;
 
 public class Employee
 {

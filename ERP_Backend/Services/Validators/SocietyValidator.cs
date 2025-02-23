@@ -1,4 +1,4 @@
-using Enterprise.API.PostSocietyDTO;
+using Enterprise.Models.Requests;
 using FluentValidation;
 
 public class SocietyValidator : AbstractValidator<PostSocietyDTO>

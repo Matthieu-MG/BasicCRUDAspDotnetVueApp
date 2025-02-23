@@ -1,4 +1,4 @@
-namespace Enterprise.API.DTOs;
+namespace Enterprise.Models.Requests;
 
 public record class PostEmployeeDTO
 {

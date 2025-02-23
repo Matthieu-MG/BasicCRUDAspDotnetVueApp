@@ -1,8 +1,10 @@
-using Enterprise.API.Employee;
-using Enterprise.API.EmployeeDTO;
-using Enterprise.API.DTOs;
+using Enterprise.Models;
+using Enterprise.Models.Requests;
+using Enterprise.Models.Responses;
+
 using Microsoft.AspNetCore.Mvc;
 using Enterprise.API.Controllers;
+using Enterprise.API.Responses;
 
 [ApiController]
 [Route("[controller]")]

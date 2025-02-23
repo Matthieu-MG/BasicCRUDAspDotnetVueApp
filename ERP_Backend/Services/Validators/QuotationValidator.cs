@@ -1,4 +1,4 @@
-using Enterprise.API.PostQuotationDTO;
+using Enterprise.Models.Requests;
 using FluentValidation;
 
 public class QuotationValidator : AbstractValidator<PostQuotationDTO>
