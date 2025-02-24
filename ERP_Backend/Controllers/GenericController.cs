@@ -1,4 +1,5 @@
 using Enterprise.API.Requests;
+using Enterprise.API.Responses;
 using Enterprise.API.Services.Repositories;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -39,11 +40,7 @@ public class GenericController<TEntity, TPost, TGet> : ControllerBase
     public async Task<ActionResult> GetPage([FromQuery] GetQueryDTO request)
     {
         var page = await _repository.GetPage(request);
-        if(page == null)
-        {
-            return NotFound(page);
-        }
-
+        
         return Ok(page);
     }
 

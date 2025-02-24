@@ -39,7 +39,7 @@ public class SocietyRepository :
         return !await _context.Society.AnyAsync(s => s.FullName == name);
     }
 
-    private Expression<Func<Society, object>> GetSortProperty(GetQueryDTO request)
+    private Expression<Func<SocietyDTO, object>> GetSortProperty(GetQueryDTO request)
     {
         return request.SortBy?.ToLower() switch
         {

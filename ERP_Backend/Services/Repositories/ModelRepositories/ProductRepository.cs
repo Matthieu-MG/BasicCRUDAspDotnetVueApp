@@ -44,7 +44,7 @@ public class ProductRepository :
         return r;
     }
 
-    private Expression<Func<Product, object>> GetSortProperty(GetQueryDTO request)
+    private Expression<Func<ProductDTO, object>> GetSortProperty(GetQueryDTO request)
     {
         return request.SortBy?.ToLower() switch
         {

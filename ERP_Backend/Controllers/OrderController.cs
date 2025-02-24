@@ -1,33 +1,34 @@
-using Microsoft.AspNetCore.Mvc;
 using Enterprise.API.Controllers;
+using Enterprise.API.Responses;
+using Enterprise.Enums;
 using Enterprise.Models;
 using Enterprise.Models.Requests;
 using Enterprise.Models.Responses;
-using Enterprise.API.Responses;
-using Enterprise.Enums;
+using Enterprise.Services.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Enterprise.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class QuotationController : GenericController<Quotation, PostQuotationDTO, QuotationDTO>, IMetadataProvider
+public class OrderController : GenericController<Order, PostOrderDTO, OrderDTO>
 {
-    private readonly QuotationRepository _quotationRepository;
+    private readonly OrderRepository _orderRepository;
 
-    public QuotationController(QuotationRepository quotationRepository) : base(quotationRepository)
+    public OrderController(OrderRepository orderRepository) : base(orderRepository)
     {
-        _quotationRepository = quotationRepository;
+        _orderRepository = orderRepository;
     }
 
-    [HttpGet("QuotationStates")]
+    [HttpGet("OrderStates")]
     public ActionResult<List<EnumDTO>> GetQuotationStates()
     {
-        const int MAX_STATES = (int)QuotationState.ConvertedToOrder + 1;
+        const int MAX_STATES = (int)OrderState.Canceled+ 1;
         List<EnumDTO> states = new(MAX_STATES);
 
         for (int i = 0; i < MAX_STATES; i++)
         {
-            states.Add(new() { Name = ((QuotationState)i).ToString(), Value = i });
+            states.Add(new() { Name = ((OrderState)i).ToString(), Value = i });
         }
 
         return Ok(states);
@@ -41,7 +42,10 @@ public class QuotationController : GenericController<Quotation, PostQuotationDTO
             new() { Name = "Units", Type = "int", Label = "Units"},
             new() { Name = "Price", Type = "price", Label = "Price"},
             new() { Name = "SocietyID", Type = "foreign", Label = "Society Name", Route="Society/Name/"},
-            new() { Name = "State", Type = "enum", Label = "State", Route = "Quotation/QuotationStates"},
+            new() { Name = "DateOrdered", Type = "date", Label = "Date Ordered"},
+            new() { Name = "ExpectedDeliveryDate", Type = "date", Label = "Expected Delivery Date"},
+            new() { Name = "State", Type = "enum", Label = "Order State", Route = "Order/OrderStates"},
+            new() { Name = "ShippingAddress", Type = "string", Label = "Shipping Address"},
             new() { Name = "EmployeeID", Type = "foreign", Label = "Employee Name", Route="Employee/Names/"}
         });
     }
@@ -53,14 +57,9 @@ public class QuotationController : GenericController<Quotation, PostQuotationDTO
             "Product",
             "Employee",
             "Society",
+            "DateOrdered",
             "Units",
             "Price"
         });
-    }
-
-    [HttpGet("Ranking/{opt}")]
-    public async Task<ActionResult> GetQuotes(string opt)
-    {
-        return Ok(await _quotationRepository.GetQuotedProductsRanking(opt));
     }
 }

@@ -1,7 +1,7 @@
 GET https://localhost:7206/Product/page?Page=2&ItemsPerPage=5
 
 ###
-GET https://localhost:7206/Product/page?Page=1&ItemsPerPage=5&SortOrder=desc&SortBy=price
+GET https://localhost:7206/Society/page?Page=1&ItemsPerPage=5&SortOrder=desc
 
 ###
 GET https://localhost:7206/Product/SortOptions

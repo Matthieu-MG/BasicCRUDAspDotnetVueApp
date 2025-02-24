@@ -8,6 +8,8 @@ namespace Enterprise.Data
         public EnterpriseDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Quotation> Quotations { get; set; } = null!;
+        public DbSet<Order> Order { get; set; } = null!;
+
         public DbSet<Product> Products{ get; set; } = null!;
         public DbSet<Society> Society { get; set;} = null!;
         public DbSet<Employee> Employee {get; set;} = null!;

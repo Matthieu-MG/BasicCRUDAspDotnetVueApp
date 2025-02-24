@@ -28,7 +28,7 @@ public record class Pagination<T>(
     public static async Task<Pagination<T>> GetPage<M>(
       GetQueryDTO request, IQueryable<M> query,
       Func< IQueryable<M>, IQueryable<M> > filterFunc,
-      Func<GetQueryDTO, Expression<Func<M, object>> > sortProperty,
+      Func<GetQueryDTO, Expression<Func<T, object>> > sortProperty,
       AutoMapper.IConfigurationProvider configurationProvider
     )
     {
@@ -48,18 +48,18 @@ public record class Pagination<T>(
             query = filterFunc(query);
         }
 
+        //* Project to DTO Properties
+        var DTOQuery = query.ProjectTo<T>(configurationProvider);
+
         //* Sorting
         if(request.IsDescending)
         {
-            query = query.OrderByDescending(sortProperty(request));
+            DTOQuery = DTOQuery.OrderByDescending(sortProperty(request));
         }
         else
         {
-            query = query.OrderBy(sortProperty(request));
+            DTOQuery = DTOQuery.OrderBy(sortProperty(request));
         }
-
-        //* Project to DTO Properties
-        var DTOQuery = query.ProjectTo<T>(configurationProvider);
 
         //* Pageing
         var page = await Pagination<T>.CreateAsync(

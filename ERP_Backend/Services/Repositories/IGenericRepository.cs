@@ -3,7 +3,7 @@ public interface IGenericRepository<TEntity, TPost, TGet>
     where TPost: class
     where TGet:class
 {
-    public int GetTotalRecordsCount();
+    public Task<int> GetTotalRecordsCount();
 
     public Task Create(TPost postDTO);
 

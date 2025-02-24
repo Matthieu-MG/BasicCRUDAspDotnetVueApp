@@ -1,5 +1,6 @@
 using Enterprise.API.Validators;
 using Enterprise.Data;
+using Enterprise.Services.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,8 @@ builder.Services.AddDbContext<EnterpriseDbContext>(options =>
 });
 
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddTransient<QuotationService>();
+builder.Services.AddTransient<QuotationRepository>();
+builder.Services.AddTransient<OrderRepository>();
 builder.Services.AddTransient<ProductRepository>();
 builder.Services.AddTransient<SocietyRepository>();
 builder.Services.AddTransient<EmployeeRepository>();
@@ -51,7 +53,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowFrontend");
-
 // app.UseHttpsRedirection();
 
 app.UseAuthorization();

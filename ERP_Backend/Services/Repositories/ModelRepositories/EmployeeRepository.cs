@@ -39,7 +39,7 @@ public class EmployeeRepository :
         return !await _context.Employee.AnyAsync(em => em.Email == email);
     }
 
-    private Expression<Func<Employee, object>> GetSortProperty(GetQueryDTO request)
+    private Expression<Func<EmployeeDTO, object>> GetSortProperty(GetQueryDTO request)
     {
         return request.SortBy?.ToLower() switch
         {

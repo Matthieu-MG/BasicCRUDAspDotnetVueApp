@@ -17,9 +17,9 @@ public class GenericRepository<TEntity, TPost, TGet> :
         _mapper = mapper;
     }
 
-    public int GetTotalRecordsCount()
+    public async Task<int> GetTotalRecordsCount()
     {
-        return _context.Set<TEntity>().Count();
+        return await _context.Set<TEntity>().CountAsync();
     }
 
     public async Task Create(TPost postDTO)
