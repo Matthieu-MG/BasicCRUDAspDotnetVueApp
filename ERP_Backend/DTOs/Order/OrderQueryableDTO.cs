@@ -1,6 +1,8 @@
 namespace Enterprise.Models.Responses;
 
-public record class OrderDTO
+//* Main purpose is for EF to use when doing queries to db, since price can't be formatted to "C2"
+//* and cause an exception since this mapping requires .NET operation not SQL
+public record class OrderQueryableDTO
 {
     //* PK
     public int ID { get; set; }
@@ -12,7 +14,7 @@ public record class OrderDTO
     //* Should be > 0
     public int Units { get; set; }
 
-    public string Price { get; set; } = default!;
+    public decimal Price { get; set; }
     
     //* FK
     public int SocietyId { get; set; }

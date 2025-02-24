@@ -19,10 +19,14 @@ public class QuotationRepository : GenericRepository<Quotation, PostQuotationDTO
 
     public async Task<Pagination<QuotationDTO>> GetPage(GetQueryDTO request)
     {
-        return await Pagination<QuotationDTO>.GetPage<Quotation>(request, _context.Quotations,
+        var page = await Pagination<QuotationQueryableDTO>.GetPage<Quotation>(request, _context.Quotations,
             (query) => query.Where( quote => quote.ProductObj.Name.Contains(request.SearchTerm ?? "")),
             GetSortProperty,
             _mapper.ConfigurationProvider
+        );
+
+        return new Pagination<QuotationDTO>(
+            _mapper.Map<List<QuotationDTO>>(page.Items), page.Page, page.ItemsPerPage, page.TotalItems
         );
     }
 
@@ -61,7 +65,7 @@ public class QuotationRepository : GenericRepository<Quotation, PostQuotationDTO
             .ToListAsync();
     }
 
-    private Expression<Func<QuotationDTO, object>> GetSortProperty(GetQueryDTO request)
+    private Expression<Func<QuotationQueryableDTO, object>> GetSortProperty(GetQueryDTO request)
     {
         return request.SortBy?.ToLower() switch
         {

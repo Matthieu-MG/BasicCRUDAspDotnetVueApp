@@ -20,14 +20,18 @@ public class OrderRepository : GenericRepository<Order, PostOrderDTO, OrderDTO>,
     {}
     public async Task<Pagination<OrderDTO>> GetPage(GetQueryDTO request)
     {
-        return await Pagination<OrderDTO>.GetPage<Order>(request, _context.Order,
+        var page = await Pagination<OrderQueryableDTO>.GetPage<Order>(request, _context.Order,
             (q) => q.Where( (o) => o.ProductObj.Name.Contains(request.SearchTerm ?? "") ),
             GetSortProperty,
             _mapper.ConfigurationProvider
         );
+
+        return new Pagination<OrderDTO>(
+            _mapper.Map<List<OrderDTO>>(page.Items), page.Page, page.ItemsPerPage,  page.TotalItems
+        );
     }
 
-    private Expression<Func<OrderDTO, object>> GetSortProperty(GetQueryDTO request)
+    private Expression<Func<OrderQueryableDTO, object>> GetSortProperty(GetQueryDTO request)
     {
         return request.SortBy?.ToLower() switch
         {
