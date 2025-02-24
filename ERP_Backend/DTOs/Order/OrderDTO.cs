@@ -6,8 +6,8 @@ public record class OrderDTO
     public int ID { get; set; }
     
     //* FK
-    public int ProductId { get; set; }
     public string ProductName { get; set; } = default!;
+    public int ProductId { get; set; }
 
     //* Should be > 0
     public int Units { get; set; }
@@ -15,8 +15,8 @@ public record class OrderDTO
     public string Price { get; set; } = default!;
     
     //* FK
-    public int SocietyId { get; set; }
     public string SocietyName { get; set; } = default!;
+    public int SocietyId { get; set; }
     
     public DateOnly DateOrdered { get; set; }
     public DateOnly ExpectedDeliveryDate {get; set;}
@@ -26,6 +26,6 @@ public record class OrderDTO
     public string ShippingAddress { get; set; } = default!;
 
     //* FK
-    public int EmployeeId { get; set; }
     public string EmployeeName { get; set; } = default!;
+    public int EmployeeId { get; set; }
 }

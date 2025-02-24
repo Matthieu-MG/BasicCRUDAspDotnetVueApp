@@ -35,6 +35,8 @@
         // Starts at 1, since props.data[0] is the primary key value of the record
         let getDataPointer = 1;
 
+        //! Ensure in backend that the property of the foreign object comes just before the foreign key in the DTO structure defintion
+        //! Any bugs where the id and value are swapped or erronous is due to the structure not being declared as above
         props.postAttribs.forEach(element => {
             if(element.type === "foreign") {
                 prefilledPutData.value.push({value: props.data[getDataPointer++], id: props.data[getDataPointer]});

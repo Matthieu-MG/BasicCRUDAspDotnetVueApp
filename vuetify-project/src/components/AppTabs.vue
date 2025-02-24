@@ -96,7 +96,6 @@
             tables.value.forEach(async table => {    
                 // TODO Batch these into a single Data Structure on Back-end to reduce API calls
                 const page = await GetPage(table, 1);
-                console.log(page);
                 table.data.items = page.items;
                 table.data.totalRecords = page.totalItems;
                 table.data.searchedTotalRecords = table.data.totalRecords;
@@ -117,8 +116,7 @@
                     key: 'actions'
                 });
 
-                table.data.postAttribs = await RequestBackendRoute('GET', `${table.route}/PostDTO`)
-                console.log(table.data.postAttribs);
+                table.data.postAttribs = await RequestBackendRoute('GET', `${table.route}/PostDTO`);
                 table.data.sortOptions = await RequestBackendRoute('GET', `${table.route}/SortOptions`);
             });
         }
